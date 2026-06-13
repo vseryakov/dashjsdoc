@@ -1,3 +1,9 @@
+<?js
+    var names = obj.type.names;
+    if (names?.length == 1 && names[0] == "Object" && obj.type.parsedType?.fields?.length) {
+        names = [this.stringifyType(obj.type.parsedType)];
+    }
+?>
 <table class="params">
     <thead>
     <tr>
@@ -9,8 +15,8 @@
     <tbody>
         <tr>
             <td class="type">
-                <?js if (obj.type?.names) {?>
-                <?js= this.partial('type.tmpl', obj.type.names) ?>
+                <?js if (names?.length) {?>
+                <?js= this.partial('type.tmpl', names) ?>
                 <?js } ?>
             </td>
             <td class="description last">

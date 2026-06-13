@@ -788,6 +788,7 @@ exports.publish = function(taffyData, opts, tutorials)
     view.tutoriallink = tutoriallink;
     view.htmlsafe = htmlsafe;
     view.outputSourceFiles = outputSourceFiles;
+    view.stringifyType = helper.stringifyType;
 
     // once for all
     view.nav = buildNav(members);

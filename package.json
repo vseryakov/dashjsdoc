@@ -17,5 +17,8 @@
     "publish.js",
     "static",
     "tmpl"
-  ]
+  ],
+  "scripts": {
+      "patch-jsdoc": "echo 'exports.stringifyType = stringifyType;' >> node_modules/jsdoc/lib/jsdoc/util/templateHelper.js"
+  }
 }
