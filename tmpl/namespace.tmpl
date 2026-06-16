@@ -32,11 +32,11 @@ var self = this;
     <?js= self.partial('augments.tmpl', data) ?>
 <?js } ?>
 
-<?js if (kind === 'event' && data.type && data.type.names) {?>
+<?js if (kind === 'event' && data.type?.names) {?>
     <h5 class="h5-types">Type:</h5>
     <ul>
         <li>
-            <?js= self.partial('type.tmpl', data.type.names) ?>
+            <?js= self.stringifyType(data.type) ?>
         </li>
     </ul>
 <?js } ?>

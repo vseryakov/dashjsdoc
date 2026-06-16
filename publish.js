@@ -156,15 +156,7 @@ function addParamAttributes(params) {
 }
 
 function buildItemTypeStrings(item) {
-    var types = [];
-
-    if (item.type?.names) {
-        item.type.names.forEach(function(name) {
-            types.push(linkto(name, htmlsafe(name)));
-        });
-    }
-
-    return types;
+    return item.type?.names ? item.type.names.map(name => linkto(name, htmlsafe(name))) : [];
 }
 
 function stringifyType(type) {
@@ -174,7 +166,7 @@ function stringifyType(type) {
         return type;
     }
     if (!type?.names?.length) return "";
-    return type.names.map(name => this.linkto(name, this.htmlsafe(name))).join(" | ");
+    return type.names.map(name => linkto(name, htmlsafe(name))).join(" | ");
 }
 
 function buildAttribsString(attribs) {
@@ -231,11 +223,10 @@ function addSignatureReturns(f) {
 }
 
 function addSignatureTypes(f) {
-    var types = f.type ? buildItemTypeStrings(f) : [];
+    var types = stringifyType(f.type);
 
     f.signature = (f.signature || '') +
-                  '<span class="type-signature">' +
-                  (types.length ? ' :' + types.join('|') : '') + '</span>';
+                  '<span class="type-signature">' + (types ? ' :' + types : '') + '</span>';
 }
 
 function addAttribs(f) {
